@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myfav</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    
+	<%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_importmap_tags %>
+	
+  </head>
+
+  <body>
+<% if session[:user_id].present? %>
+		  <p><%=User.find(session[:user_id]).username%>としてログインしています</p>
+            <%= button_to "ログアウト", logout_path, method: :delete %>
+          
+<% else %>
+            <%= link_to "ログイン", login_path%>
+			<%= link_to "新規登録", new_user_path%>
+
+<% end %>
+    <%= yield %>
+  </body>
+</html>

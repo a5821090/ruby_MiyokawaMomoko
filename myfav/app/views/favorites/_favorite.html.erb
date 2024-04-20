@@ -1,0 +1,106 @@
+<div id="<%= dom_id favorite %>">
+<div class="favorites">
+<p>
+    <strong>User:</strong>
+    <%= favorite.user_id %>:
+	 <% if favorite.user %>
+            <%= favorite.user.username %>
+        <% else %>
+            User not found
+        <% end %>
+        
+  </p>
+  <hr>
+  <p>
+    <strong>Name:</strong>
+    <%= favorite.name %>
+  </p>
+    <p>
+    <strong>Image:</strong><br>
+	<% if @favorite.image.present? %>
+	<div class="photo">
+ <%= image_tag @favorite.image.url %>
+  </div>
+  <% else %>
+  <div class="photo">
+  <%= image_tag 'people_team.png' %>
+  </div>
+
+<% end %>
+
+   
+  </p>
+  <p>
+    <strong>Source:</strong>
+	 </p>
+	 <div class="link">
+    <%= text_url_to_link((h(favorite.caption).html_safe)).html_safe %>
+ </div>
+
+  <p>
+    <strong>Fullname/Nickname:</strong>
+    <%= favorite.nickname %>
+  </p>
+
+  <p>
+    <strong>Birthday:</strong>
+    <%= favorite.birthday %>
+  </p>
+
+  <p>
+    <strong>Bloodtype:</strong>
+    <%= favorite.bloodtype %>
+  </p>
+
+  <p>
+    <strong>Birthplace:</strong>
+    <%= favorite.birthplace %>
+  </p>
+
+  <p>
+    <strong>Office:</strong>
+    <%= favorite.office %>
+  </p>
+
+  <p>
+    <strong>Age:</strong>
+    <%= favorite.age %>
+  </p>
+
+  <p>
+    <strong>Gender:</strong>
+    <%= favorite.gender %>
+  </p>
+
+  <p>
+    <strong>Height:</strong>
+    <%= favorite.height %>
+  </p>
+
+  <p>
+    <strong>Weight:</strong>
+    <%= favorite.weight %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= favorite.category %>
+  </p>
+
+  <p>
+    <strong>MBTI:</strong>
+    <%= favorite.MBTI %>
+  </p>
+
+  <p>
+    <strong>Link:</strong>
+    <%= text_url_to_link((h(favorite.link).html_safe)).html_safe %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= favorite.comment %>
+  </p>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+<div id="<%= dom_id like %>">
+  <p>
+    <strong>User:</strong>
+    <%= like.user_id %>
+  </p>
+
+  <p>
+    <strong>Favorite:</strong>
+    <%= like.favorite_id %>
+  </p>
+  
+  <% if favorite.liked_by?(current_user) %>
+	<%= link_to(favorite_unlike_path(favorite), method: :delete) do %>
+		<p>いいね解除</p>
+	<% end %>
+  <% else %>
+	<%= link_to(favorite_like_path(favorite), method: :post) do %>
+		<p>いいね</p>
+	<% end %>
+  <% end %>
+
+</div>

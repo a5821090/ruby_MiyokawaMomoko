@@ -1,0 +1,61 @@
+<% content_for :css do %>
+	<%= stylesheet_link_tag "fav_index" %>
+<% end %>
+<p style="color: green"><%= notice %></p>
+
+<h1>Favorites</h1>
+
+<div class="favorites">
+  <% @favorites.each do |favorite| %>
+    <div>
+	<div class="fav_name">
+    <h2><%= favorite.name %></h2>
+	</div>
+    
+	
+	<p>
+    <strong>Image:</strong><br>
+	<% if favorite.image.present? %>
+	<div class="photo">
+ <%= image_tag favorite.image.url %>
+ </div>
+  <% else %>
+  <div class="photo">
+  <%= image_tag 'people_team.png' %>
+  </div>
+<% end %> 
+  </p>
+  
+	
+	
+	<p>
+	<strong>Source:</strong>
+	</p>
+	<div class="link">
+	<%= text_url_to_link((h(favorite.caption).html_safe)).html_safe %>
+	</div>
+	
+	
+  
+<% session[:user_id] && if User.find(session[:user_id]).liked_by?(favorite.id) %>
+  <%= form_with(model: favorite, url: destroy_like_path(favorite), method: :delete, local: true) do |form| %>
+    <%= form.submit '💖' %><%= favorite.likes.count %>
+  <% end %>
+<% else %>
+  <%= form_with(model: favorite, url: create_like_path(favorite), method: :post, local: true) do |form| %>
+    <%= form.submit '♡' %><%= favorite.likes.count %>
+  <% end %>
+  <% end %>
+  
+    <p>
+      <%= link_to "Show this favorite", favorite %>
+    </p>
+	<hr>
+  <% end %>
+  </div>
+</div>
+
+
+
+
+<%= link_to "New favorite", new_favorite_path %>

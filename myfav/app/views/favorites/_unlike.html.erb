@@ -1,0 +1,1 @@
+<td><%= link_to 'UnLike', favorite_like_path(favorite_id: favorite.id, id: User.find(session[:user_id]).likes.find_by(favorite_id: favorite.id)), method: :delete %></td>

@@ -1,0 +1,101 @@
+<%= form_with(model: favorite) do |form| %>
+  <% if favorite.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(favorite.errors.count, "error") %> prohibited this favorite from being saved:</h2>
+
+      <ul>
+        <% favorite.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+   <div>
+  <%= form.label :image, style: "display: block" %>
+ <%= form.file_field :image, class: "image" %>
+   </div>
+   <div>
+  <%= form.label :caption, style: "display: block" %>
+ <%= form.text_field :caption %>
+   </div>
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+  Fullname/
+    <%= form.label :nickname, style: "display: block" %>
+    <%= form.text_field :nickname %>
+  </div>
+
+  <div>
+    <%= form.label :birthday, style: "display: block" %>
+    <%= form.date_field :birthday %>
+  </div>
+
+  <div>
+    <%= form.label :bloodtype, style: "display: block" %>
+    <%= form.text_field :bloodtype %>
+  </div>
+
+  <div>
+    <%= form.label :birthplace, style: "display: block" %>
+    <%= form.text_field :birthplace %>
+  </div>
+
+  <div>
+    <%= form.label :office, style: "display: block" %>
+    <%= form.text_field :office %>
+  </div>
+
+  <div>
+    <%= form.label :age, style: "display: block" %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div>
+    <%= form.label :height, style: "display: block" %>
+    <%= form.number_field :height %>
+  </div>
+
+  <div>
+    <%= form.label :weight, style: "display: block" %>
+    <%= form.number_field :weight %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div>
+    <%= form.label :MBTI, style: "display: block" %>
+    <%= form.text_field :MBTI %>
+  </div>
+
+  <div>
+    <%= form.label :link, style: "display: block" %>
+    <%= form.text_area :link %>
+  </div>
+
+  <div>
+    <%= form.label :comment, style: "display: block" %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
